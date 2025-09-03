@@ -6,14 +6,15 @@ const todoModel = require('./Models/todopro.js');
 const cors = require('cors');
 require('dotenv').config();
 
-mongoose.connect(process.env.MONGO_URL+'taskmanager');
+mongoose.connect(process.env.MONGOURL+'taskmanager');
+
 app.use(cors());
 app.use(express.json());
 
 app.post('/add', (req, res) => {
     const newTask = req.body.NameofTheTask;;
     todoModel.create({Task : newTask})
-    res.send('Done');
+    res.send('Done'); 
 })
 
 app.get('/get', (req,res)=>{
