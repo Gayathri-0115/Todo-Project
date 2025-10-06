@@ -1,10 +1,10 @@
 const express = require('express')
 const app = express()
-const port = 3000
 const mongoose = require('mongoose');
 const todoModel = require('./Models/todopro.js');
 const cors = require('cors');
 require('dotenv').config();
+const port = process.env.PORT || 4000;
 
 mongoose.connect(process.env.MONGOURL+'taskmanager');
 
@@ -12,7 +12,7 @@ app.use(cors());
 app.use(express.json());
 
 app.post('/add', (req, res) => {
-    const newTask = req.body.NameofTheTask;;
+    const newTask = req.body.NameofTheTask;
     todoModel.create({Task : newTask})
     res.send('Done'); 
 })
